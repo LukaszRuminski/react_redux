@@ -6,7 +6,7 @@ import React from 'react';
 class OfferPage extends React.Component {
   render () {
     return (
-      <div>
+      <div className="jumbotron">
         <h1>Offer</h1>
         <p>This is Offer Page</p>
       </div>

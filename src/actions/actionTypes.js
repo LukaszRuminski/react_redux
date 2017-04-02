@@ -1,1 +1,1 @@
-impo
+export const CREATE_QUESTION = 'CREATE_QUESTION';

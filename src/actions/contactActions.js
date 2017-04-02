@@ -1,4 +1,6 @@
+import * as types from './actionTypes';
+
 export function createQuestion(question) {
-  return {type: 'CREAT_QUESTION', question};
+  return {type: types.CREATE_QUESTION, question};
 
 }
