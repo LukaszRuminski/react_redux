@@ -35,7 +35,7 @@ class ContactPage extends React.Component {
 
   render () {
     return (
-      <div className="jumbotron">
+      <div>
         <h1>Contact</h1>
         {this.props.questions.map(this.questionRow)}
         <h2>Add your Question</h2>

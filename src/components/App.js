@@ -4,9 +4,13 @@ import LeftNav from './common/leftNav/LeftNav';
 class App extends React.Component {
   render() {
     return (
-      <div className="wrapper">
+      <div id="wrapper">
         <LeftNav/>
-        {this.props.children}
+        <div id="page-content-wrapper">
+          <div className="container-fluid">
+            {this.props.children}
+          </div>
+        </div>
       </div>
     );
   }
@@ -17,13 +21,3 @@ App.propTypes = {
 };
 
 export default App;
-
-
-<body class="vertical-header grubson-design {{containerClass}}" >
-<progess-bar></progess-bar>
-<div class="wrapper">
-  <navigation></navigation>
-  <content ng-view></content>
-  <script src="bundle.js" ></script>
-</div>
-</body>
