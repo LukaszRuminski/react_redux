@@ -6,14 +6,16 @@ import {bindActionCreators} from 'redux';
 import * as menuActions from '../../../actions/menuActions';
 
 class LeftNav extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
+
     this.state = {
-       toggled: props.toggleState
+      toggled: {value: false, activeClass: ''}
     };
-    props.actions.createToggled(this.state.toggled);
+    this.props.actions.createToggled(this.state.toggled);
 
     this.toggleMenu = this.toggleMenu.bind(this);
+
   }
 
 
@@ -36,17 +38,16 @@ class LeftNav extends React.Component {
   }
 
   toggleMenu(){
-    let menuToggled = !this.state.toggled.value;
-    let menuToggledClass = this.state.toggled.activeClass;
-    if (menuToggled){
-      menuToggledClass = 'toggled' ;
+    const wrapper = document.querySelector("#wrapper");
+    const toggled = !this.state.toggled.value;
+    let toggledClass = this.state.toggled.activeClass;
+    if (toggled){
+      toggledClass = 'toggled' ;
     } else {
-      menuToggledClass = '';
+      toggledClass = '';
     }
-    this.toggleValues = {value: menuToggled, activeClass: menuToggledClass};
-    this.setState({toggled: this.toggleValues});
-    this.props.callBackParent({toggled: this.toggleValues}).bind(this);
-    this.props.actions.createToggled(this.toggleValues);
+    this.setState({ toggled: {value: toggled, activeClass: toggledClass} });
+    this.props.actions.createToggled(this.state.toggled);
   }
 
   render() {
@@ -102,9 +103,7 @@ class LeftNav extends React.Component {
 
 LeftNav.propTypes = {
   toggled: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-  toggleState: PropTypes.object.isRequired,
-  callBackParent: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
