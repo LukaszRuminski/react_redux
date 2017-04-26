@@ -8,16 +8,12 @@ class App extends React.Component {
     this.state = {
       toggled: {value: false, activeClass: ''}
     };
+    this.onToggleMenu = (newState) => {
+      this.setState(newState);
+    };
 
   }
-  // callBackParent(toggled){
-  //   this.onToggleMenu(toggled);
-  // }
-  onToggleMenu (newState) {
-    this.setState({toggled: newState});
-  }
   render() {
-    console.log(this.state.toggled);
     return (
       <div id="wrapper" className={this.state.toggled.activeClass}>
         <LeftNav

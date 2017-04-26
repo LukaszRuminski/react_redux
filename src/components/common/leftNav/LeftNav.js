@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import './LeftNav.css';
+import './LeftNav.scss';
 import { Link, IndexLink } from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -21,6 +21,7 @@ class LeftNav extends React.Component {
     if (items.length > 0) {
       return items.map((item, index) => (
         <this.MenuItem key={index} item={item}/>
+
       ));
     }
     else return [];
@@ -30,7 +31,7 @@ class LeftNav extends React.Component {
     return (
       <li key={item.id}>
         <Link to={item.link} activeClassName="active"><i className={"fa " + item.icon}></i>{item.text}</Link>
-        <p>{item.description}</p>
+        {/*<p>{item.description}</p>*/}
       </li>
     );
   }
@@ -45,7 +46,7 @@ class LeftNav extends React.Component {
     }
     this.toggleValues = {value: menuToggled, activeClass: menuToggledClass};
     this.setState({toggled: this.toggleValues});
-    this.props.callBackParent({toggled: this.toggleValues}).bind(this);
+    this.props.callBackParent({toggled: this.toggleValues});
     this.props.actions.createToggled(this.toggleValues);
   }
 
@@ -104,7 +105,7 @@ LeftNav.propTypes = {
   toggled: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   toggleState: PropTypes.object.isRequired,
-  callBackParent: PropTypes.func.isRequired
+  callBackParent: PropTypes.func
 };
 
 function mapStateToProps(state, ownProps) {

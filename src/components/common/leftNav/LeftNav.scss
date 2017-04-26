@@ -23,11 +23,12 @@ body {
   left:-200px;
   top:0;
   width:250px;
+  background-color: #202124;
+  border-color: #202124;
   border-right: 1px solid #ececec;
   border-top: none;
   border-bottom: none;
   box-shadow:3px 0 2px 0 rgba(0,0,0,.03);
-  background:#fbfbfb;
   z-index: 1000;
   transition:all ease-in-out .3s;
   -moz-transition:all ease-in-out .3s;
@@ -62,20 +63,58 @@ body {
   z-index: 2;
 }
 
+.sidebar-inner li {
+  float: left;
+}
+
 .sidebar-nav {
   width:200px;
   float:left;
+  list-style: none;
+  text-align: center;
+  margin: 0;
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
-  line-height: 40px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+   /*float: left;*/
 }
 
 .sidebar-nav li a {
+  color: #3d3d3d;
+  font-size: 13px;
+  font-weight: 300;
+  position: relative;
   display: block;
-  text-decoration: none;
-  color: #999999;
+  padding: 10px 20px;
+  line-height: 14px;
+}
+
+.sidebar-nav > li > a {
+  min-height: 45px;
+  line-height: 25px;
+  border-left: none;
+  border-bottom: 1px solid #2f3033;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #7d7d7d;
+}
+.sidebar-nav li a::before {
+  top: 45px;
+  position: absolute;
+  left: 10px;
+  content: '';
+  background:#5ea7f0;
+  height:2px;
+  width:0px;
+  margin-left:10px;
+  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.8) 0s;
+  -moz-transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.8) 0s;
+  -ms-transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.8) 0s;
+  -o-transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.8) 0s;
+  -webkit-transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.8) 0s;
 }
 
 .sidebar-nav li a:hover {

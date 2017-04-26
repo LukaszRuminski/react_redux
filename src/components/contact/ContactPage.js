@@ -14,8 +14,13 @@ class ContactPage extends React.Component {
       question: { title: ""}
     };
 
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
+    this.onTitleChange =  this.onTitleChange.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
+    this._handleEnterKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        this.addQuestion();
+      }
+    };
 
   }
 
@@ -25,7 +30,7 @@ class ContactPage extends React.Component {
     this.setState({question: question});
   }
 
-  onClickSave(){
+  addQuestion(){
     this.props.actions.createQuestion(this.state.question);
   }
 
@@ -43,11 +48,12 @@ class ContactPage extends React.Component {
           type="text"
           onChange={this.onTitleChange}
           value={this.state.question.title}
+          onKeyPress={this._handleEnterKeyPress}
         />
         <input
           type="submit"
           value="Save"
-          onClick={this.onClickSave}
+          onClick={this.addQuestion}
         />
       </div>
     );
