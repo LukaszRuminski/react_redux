@@ -16,6 +16,7 @@ class ContactPage extends React.Component {
 
     this.onTitleChange =  this.onTitleChange.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
+    this.clearInput = this.clearInput.bind(this);
     this._handleEnterKeyPress = (e) => {
       if (e.key === 'Enter') {
         this.addQuestion();
@@ -32,6 +33,10 @@ class ContactPage extends React.Component {
 
   addQuestion(){
     this.props.actions.createQuestion(this.state.question);
+    this.clearInput();
+  }
+  clearInput(){
+    this.refs.questionText.value="";
   }
 
   questionRow(question, index){
@@ -45,6 +50,7 @@ class ContactPage extends React.Component {
         {this.props.questions.map(this.questionRow)}
         <h2>Add your Question</h2>
         <input
+          ref="questionText"
           type="text"
           onChange={this.onTitleChange}
           value={this.state.question.title}

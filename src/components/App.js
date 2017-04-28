@@ -6,7 +6,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      toggled: {value: false, activeClass: ''}
+      toggled: {value: true, activeClass: 'toggled'}
     };
     this.onToggleMenu = (newState) => {
       this.setState(newState);
